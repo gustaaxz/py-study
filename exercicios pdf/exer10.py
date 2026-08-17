@@ -1,0 +1,161 @@
+## 10. Sistema de produção do parque fabril — Projeto final
+
+# Listas globais
+colaboradores = []
+maquinas = []
+producoes = []
+
+
+# 1. Cadastrar Colaborador
+def cadastrar_colaborador():
+    nome = input("Nome do colaborador: ")
+    matricula = input("Matrícula: ")
+    colaboradores.append({"nome": nome, "matricula": matricula})
+    print("-> Colaborador cadastrado com sucesso!")
+
+
+# 2. Cadastrar Máquina
+def cadastrar_maquina():
+    nome_maquina = input("Nome ou código da máquina: ")
+    maquinas.append(nome_maquina)
+    print("-> Máquina cadastrada com sucesso!")
+
+
+# 3. Registrar Produção
+def registrar_producao():
+    if len(maquinas) == 0:
+        print("-> Nenhuma máquina cadastrada. Cadastre uma máquina primeiro!")
+        return
+    
+    print("\nMáquinas cadastradas:")
+    for m in maquinas:
+        print(f"- {m}")
+    
+    nome_m = input("Digite o nome da máquina que produziu: ")
+    qtd = int(input("Quantidade de peças produzidas: "))
+    
+    producoes.append({
+        "maquina": nome_m,
+        "produzidas": qtd,
+        "aprovadas": 0,
+        "reprovadas": 0
+    })
+    print("-> Produção registrada!")
+
+
+# 4. Registrar Inspeção de Qualidade
+def registrar_inspecao():
+    if len(producoes) == 0:
+        print("-> Nenhuma produção registrada ainda.")
+        return
+    
+    print("\nRegistros de produção:")
+    pos = 1
+    for p in producoes:
+        print(f"{pos}. Máquina: {p['maquina']} | Produzidas: {p['produzidas']}")
+        pos = pos + 1
+    
+    indice = int(input("Digite o número do registro para inspecionar: ")) - 1
+    
+    if indice >= 0 and indice < len(producoes):
+        aprovadas = int(input("Quantidade de peças aprovadas: "))
+        reprovadas = int(input("Quantidade de peças reprovadas: "))
+        
+        producoes[indice]["aprovadas"] = aprovadas
+        producoes[indice]["reprovadas"] = reprovadas
+        print("-> Inspeção registrada!")
+    else:
+        print("-> Registro inválido!")
+
+
+# 5. Consultar Produção
+def consultar_producao():
+    if len(producoes) == 0:
+        print("-> Nenhum registro encontrado.")
+        return
+    
+    print("\n--- Consultar Produções ---")
+    for p in producoes:
+        produzidas = p["produzidas"]
+        aprovadas = p["aprovadas"]
+        
+        if produzidas > 0:
+            qualidade = (aprovadas / produzidas) * 100
+        else:
+            qualidade = 0.0
+        
+        print(f"Máquina: {p['maquina']} | Produzidas: {produzidas} | Aprovadas: {aprovadas} | Reprovadas: {p['reprovadas']} | Qualidade: {qualidade:.1f}%")
+
+
+# 6. Relatório Final da Produção
+def relatorio_producao():
+    if len(producoes) == 0:
+        print("-> Sem dados para relatório.")
+        return
+    
+    total_produzido = 0
+    total_aprovadas = 0
+    total_reprovadas = 0
+    
+    for p in producoes:
+        total_produzido = total_produzido + p["produzidas"]
+        total_aprovadas = total_aprovadas + p["aprovadas"]
+        total_reprovadas = total_reprovadas + p["reprovadas"]
+    
+    if total_produzido > 0:
+        qualidade_geral = (total_aprovadas / total_produzido) * 100
+    else:
+        qualidade_geral = 0.0
+    
+    maior_qtd = -1
+    maior_maquina = ""
+    for p in producoes:
+        if p["produzidas"] > maior_qtd:
+            maior_qtd = p["produzidas"]
+            maior_maquina = p["maquina"]
+
+    print("\n====================================")
+    print(" RELATÓRIO FINAL DO PARQUE FABRIL")
+    print("====================================")
+    print(f"Total de colaboradores: {len(colaboradores)}")
+    print(f"Total de máquinas: {len(maquinas)}")
+    print(f"Total de peças produzidas: {total_produzido}")
+    print(f"Total de peças aprovadas: {total_aprovadas}")
+    print(f"Total de peças reprovadas: {total_reprovadas}")
+    print(f"Percentual de qualidade geral: {qualidade_geral:.1f}%")
+    print(f"Máquina com maior produção: {maior_maquina} ({maior_qtd} peças)")
+    print("====================================")
+
+
+# --- MENU PRINCIPAL ---
+while True:
+    print("\n====================================")
+    print(" CONTROLE DO PARQUE FABRIL")
+    print("====================================")
+    print("1 - Cadastrar colaborador")
+    print("2 - Cadastrar máquina")
+    print("3 - Registrar produção")
+    print("4 - Registrar inspeção de qualidade")
+    print("5 - Consultar produção")
+    print("6 - Relatório da produção")
+    print("0 - Sair")
+    
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        cadastrar_colaborador()
+    elif opcao == "2":
+        cadastrar_maquina()
+    elif opcao == "3":
+        registrar_producao()
+    elif opcao == "4":
+        registrar_inspecao()
+    elif opcao == "5":
+        consultar_producao()
+    elif opcao == "6":
+        relatorio_producao()
+    elif opcao == "0":
+        print("Encerrando o sistema...")
+        break
+    else:
+        print("Opção inválida!")
