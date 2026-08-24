@@ -1,6 +1,3 @@
-## 7. Segurança no trabalho
-# Crie um programa para verificar se um colaborador está utilizando os equipamentos de proteção necessários.
-
 capacete = input("Está utilizando capacete? (s/n): ").strip().lower()
 oculos = input("Está utilizando óculos de proteção? (s/n): ").strip().lower()
 protetor = input("Está utilizando protetor auricular? (s/n): ").strip().lower()

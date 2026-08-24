@@ -1,12 +1,8 @@
-## 10. Sistema de produção do parque fabril — Projeto final
-
-# Listas globais
 colaboradores = []
 maquinas = []
 producoes = []
 
 
-# 1. Cadastrar Colaborador
 def cadastrar_colaborador():
     nome = input("Nome do colaborador: ")
     matricula = input("Matrícula: ")
@@ -14,14 +10,12 @@ def cadastrar_colaborador():
     print("-> Colaborador cadastrado com sucesso!")
 
 
-# 2. Cadastrar Máquina
 def cadastrar_maquina():
     nome_maquina = input("Nome ou código da máquina: ")
     maquinas.append(nome_maquina)
     print("-> Máquina cadastrada com sucesso!")
 
 
-# 3. Registrar Produção
 def registrar_producao():
     if len(maquinas) == 0:
         print("-> Nenhuma máquina cadastrada. Cadastre uma máquina primeiro!")
@@ -43,7 +37,6 @@ def registrar_producao():
     print("-> Produção registrada!")
 
 
-# 4. Registrar Inspeção de Qualidade
 def registrar_inspecao():
     if len(producoes) == 0:
         print("-> Nenhuma produção registrada ainda.")
@@ -68,7 +61,6 @@ def registrar_inspecao():
         print("-> Registro inválido!")
 
 
-# 5. Consultar Produção
 def consultar_producao():
     if len(producoes) == 0:
         print("-> Nenhum registro encontrado.")
@@ -87,7 +79,6 @@ def consultar_producao():
         print(f"Máquina: {p['maquina']} | Produzidas: {produzidas} | Aprovadas: {aprovadas} | Reprovadas: {p['reprovadas']} | Qualidade: {qualidade:.1f}%")
 
 
-# 6. Relatório Final da Produção
 def relatorio_producao():
     if len(producoes) == 0:
         print("-> Sem dados para relatório.")
@@ -127,7 +118,6 @@ def relatorio_producao():
     print("====================================")
 
 
-# --- MENU PRINCIPAL ---
 while True:
     print("\n====================================")
     print(" CONTROLE DO PARQUE FABRIL")

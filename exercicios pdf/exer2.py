@@ -1,11 +1,3 @@
-## 2. Controle de produção
-# Um colaborador precisa registrar a quantidade de peças produzidas durante 5 dias.
-# Crie um programa que:
-# - Receba a produção de cada dia.
-# - Calcule o total produzido.
-# - Calcule a média diária.
-# - Mostre o dia de maior produção.
-
 producao_dias = []
 
 for dia in range(1, 6):

@@ -1,11 +1,3 @@
-## 8. Relatório de produção
-# Crie uma função que receba uma lista contendo a produção diária de uma linha do parque fabril.
-# A função deve retornar:
-# - Total produzido.
-# - Média de produção.
-# - Maior produção.
-# - Menor produção.
-
 def relatorio_producao(producao):
     total = sum(producao)
     media = total / len(producao)

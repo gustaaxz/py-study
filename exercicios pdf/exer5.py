@@ -1,9 +1,3 @@
-## 5. Cálculo de eficiência da produção
-# Crie uma função que receba:
-# - Quantidade planejada.
-# - Quantidade produzida.
-# Calcule a eficiência em porcentagem.
-
 def calcular_eficiencia(planejada, realizada):
     if planejada <= 0:
         return 0.0

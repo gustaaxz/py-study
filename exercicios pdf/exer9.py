@@ -1,24 +1,12 @@
-## 9. Controle de colaboradores por setor
-# Crie um programa utilizando listas e dicionários para cadastrar colaboradores.
-# Cada colaborador deve possuir: Nome, Matrícula, Setor, Cargo
-# O programa deve permitir:
-# 1. Cadastrar colaborador
-# 2. Listar colaboradores
-# 3. Pesquisar colaborador pela matrícula
-# 4. Mostrar quantos colaboradores existem em cada setor
-
-# Lista global para armazenar os colaboradores
 colaboradores = []
 
 
-# FUNÇÃO 1: Cadastrar Colaborador
 def cadastrar_colaborador():
     nome = input("Digite o nome: ")
     matricula = input("Digite a matrícula: ")
     setor = input("Digite o setor: ")
     cargo = input("Digite o cargo: ")
     
-    # Criando o dicionário com as informações
     colaborador = {
         "nome": nome,
         "matricula": matricula,
@@ -30,7 +18,6 @@ def cadastrar_colaborador():
     print("-> Colaborador cadastrado com sucesso!")
 
 
-# FUNÇÃO 2: Listar Todos os Colaboradores
 def listar_colaboradores():
     if len(colaboradores) == 0:
         print("-> Nenhum colaborador cadastrado ainda.")
@@ -40,7 +27,6 @@ def listar_colaboradores():
             print(f"Matrícula: {c['matricula']} | Nome: {c['nome']} | Setor: {c['setor']} | Cargo: {c['cargo']}")
 
 
-# FUNÇÃO 3: Pesquisar Colaborador por Matrícula
 def pesquisar_por_matricula():
     mat_busca = input("Digite a matrícula para pesquisa: ")
     encontrado = False
@@ -55,12 +41,10 @@ def pesquisar_por_matricula():
         print("-> Colaborador não encontrado.")
 
 
-# FUNÇÃO 4: Mostrar Quantidade por Setor
 def mostrar_por_setor():
     if len(colaboradores) == 0:
         print("-> Nenhum colaborador cadastrado.")
     else:
-        # Dicionário para contar a quantidade de colaboradores em cada setor
         setores = {}
         for c in colaboradores:
             setor = c["setor"]
@@ -74,7 +58,6 @@ def mostrar_por_setor():
             print(f"Setor {setor}: {qtd} colaborador(es)")
 
 
-# --- MENU PRINCIPAL ---
 while True:
     print("\n=== MENU COLABORADORES ===")
     print("1. Cadastrar colaborador")

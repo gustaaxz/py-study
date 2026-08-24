@@ -1,7 +1,3 @@
-## 4. Controle de estoque do parque fabril
-# Crie um programa com uma lista de materiais e suas quantidades.
-# O programa deve informar quais materiais estão com estoque abaixo de 10 unidades.
-
 materiais = ["Parafuso", "Cabo", "Rolamento", "Terminal"]
 quantidades = [5, 30, 8, 50]
 
